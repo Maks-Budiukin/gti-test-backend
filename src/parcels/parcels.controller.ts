@@ -11,7 +11,6 @@ import { ParcelsService } from './parcels.service';
 import { ParcelCreateDto } from './dto/parcel-create.dto';
 import { ParcelResponseDto } from './dto/parcel-response.dto';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
-import { Parcel } from './parcels.model';
 import { ParcelUpdateDto } from './dto/parcel-update.dto';
 
 @Controller('parcels')
@@ -26,7 +25,11 @@ export class ParcelsController {
     type: ParcelResponseDto,
   })
   async createParcel(@Body() dto: ParcelCreateDto): Promise<ParcelResponseDto> {
-    return this.parcelsService.createParcel(dto);
+    try {
+      return this.parcelsService.createParcel(dto);
+    } catch (error) {
+      return error.message;
+    }
   }
 
   @Get('')
@@ -37,7 +40,11 @@ export class ParcelsController {
     type: ParcelResponseDto,
   })
   async findAllParcels(): Promise<ParcelResponseDto[]> {
-    return this.parcelsService.getAllParcels();
+    try {
+      return this.parcelsService.getAllParcels();
+    } catch (error) {
+      return error.message;
+    }
   }
 
   @Get('/:id')
@@ -48,7 +55,11 @@ export class ParcelsController {
     type: ParcelResponseDto,
   })
   async findById(@Param('id') _id: string): Promise<ParcelResponseDto> {
-    return this.parcelsService.getParcelById(_id);
+    try {
+      return this.parcelsService.getParcelById(_id);
+    } catch (error) {
+      return error.message;
+    }
   }
 
   @Patch('/:id')
@@ -62,7 +73,11 @@ export class ParcelsController {
     @Param('id') _id: string,
     @Body() dto: ParcelUpdateDto,
   ): Promise<ParcelResponseDto> {
-    return this.parcelsService.updateParcel(_id, dto);
+    try {
+      return this.parcelsService.updateParcel(_id, dto);
+    } catch (error) {
+      return error.message;
+    }
   }
 
   @Delete('/:id')
@@ -73,6 +88,10 @@ export class ParcelsController {
     type: ParcelResponseDto,
   })
   async deleteParcel(@Param('id') _id: string): Promise<ParcelResponseDto> {
-    return this.parcelsService.deleteParcel(_id);
+    try {
+      return this.parcelsService.deleteParcel(_id);
+    } catch (error) {
+      return error.message;
+    }
   }
 }
