@@ -2,7 +2,6 @@ import { ApiResponseProperty } from '@nestjs/swagger';
 import { ParcelTypes } from './parcel-types.dto';
 import { IsEnum, IsString } from 'class-validator';
 import { Date, ObjectId } from 'mongoose';
-import { isDate } from 'util/types';
 
 export class ParcelResponseDto {
   @ApiResponseProperty({
