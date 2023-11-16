@@ -1,7 +1,8 @@
 import { ApiResponseProperty } from '@nestjs/swagger';
 import { ParcelTypes } from './parcel-types.dto';
 import { IsEnum, IsString } from 'class-validator';
-import { ObjectId } from 'mongoose';
+import { Date, ObjectId } from 'mongoose';
+import { isDate } from 'util/types';
 
 export class ParcelResponseDto {
   @ApiResponseProperty({
@@ -34,15 +35,15 @@ export class ParcelResponseDto {
   @IsString()
   description: string;
 
-  // @ApiResponseProperty({
-  //   example: 'High quality craft beer. FRAGILE AND VERY EXPENSIVE!',
-  // })
-  // @IsString()
-  // createdAt: string;
+  @ApiResponseProperty({
+    example: '2023-11-16T15:23:16.326Z',
+  })
+  @IsString()
+  createdAt?: Date;
 
-  // @ApiResponseProperty({
-  //   example: 'High quality craft beer. FRAGILE AND VERY EXPENSIVE!',
-  // })
-  // @IsString()
-  // updatedAt: string;
+  @ApiResponseProperty({
+    example: '2023-11-16T15:23:16.326Z',
+  })
+  @IsString()
+  updatedAt?: Date;
 }

@@ -1,7 +1,7 @@
 export enum ParcelTypes {
-  gadgets,
-  drinks,
-  clothes,
-  medicines,
-  other,
+  gadgets = 'gadgets',
+  drinks = 'drinks',
+  clothes = 'clothes',
+  medicines = 'medicines',
+  other = 'other',
 }

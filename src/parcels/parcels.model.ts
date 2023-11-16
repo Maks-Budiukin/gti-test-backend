@@ -14,7 +14,7 @@ export class Parcel {
   @Prop()
   to: string;
 
-  @Prop()
+  @Prop({ enum: ParcelTypes })
   type: ParcelTypes;
 
   @Prop()
