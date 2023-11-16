@@ -1,8 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument, ObjectId } from 'mongoose';
+import { ParcelTypes } from './dto/parcel-types.dto';
 
 export type ParcelDocument = HydratedDocument<Parcel>;
 
+@Schema({ versionKey: false, timestamps: true })
 export class Parcel {
   _id?: ObjectId;
 
@@ -13,7 +15,7 @@ export class Parcel {
   to: string;
 
   @Prop()
-  type: string;
+  type: ParcelTypes;
 
   @Prop()
   description: string;
