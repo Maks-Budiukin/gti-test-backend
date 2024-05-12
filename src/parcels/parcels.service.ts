@@ -13,11 +13,6 @@ export class ParcelsService {
     private readonly parcelModel: Model<ParcelDocument>,
   ) {}
 
-  async expraFunc(): Promise<void> {
-    const x = 15;
-    return;
-  }
-  
   async createParcel(dto: ParcelCreateDto): Promise<ParcelResponseDto> {
     const newParcel = await this.parcelModel.create(dto);
     return newParcel;
